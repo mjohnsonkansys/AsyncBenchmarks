@@ -12,14 +12,14 @@ dotnet run -c Release
 By default, Benchmark.NET runs every benchmark it finds in the executable. To run
 specific benchmarks, you can specify the `--filter` argument at the command line.
 
-For example, to run only call tests you can run
+For example, to run only call benchmarks you can run
 
 ```
-dotnet run -c Release --filter *CallTests*
+dotnet run -c Release --filter *CallBench*
 ```
 
 # Call Benchmark
-This test compares synchronous, asynchronous, and mixed method calls.
+This benchmark compares synchronous, asynchronous, and mixed method calls.
 
 `AsyncCall` is an async method that `await`s a call to another async method.
 `MixedCall` is an async method that `await`s a call to a synchronous method.
@@ -34,7 +34,7 @@ This test compares synchronous, asynchronous, and mixed method calls.
 | FullSyncCall |  4.307 ns | 0.0893 ns | 0.0836 ns |
 
 # Async Repo Benchmark
-This test simulates a call to repository backed by some form of external storage.
+This benchmark simulates a call to repository backed by some form of external storage.
 
 The `AsyncRepo` simulates an external call by `await`ing `Task.Yield()`.
 
