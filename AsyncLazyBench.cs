@@ -34,17 +34,35 @@ namespace AsyncBenchmarks
         }
 
         [Benchmark]
-        public async Task<int> TaskMulti()
+        public async Task<int> YieldingAsyncLazySingle()
         {
-            var lazy = new AsyncLazy<int>(() => AsyncCall());
+            var lazy = new AsyncLazy<int>(() => YieldingAsyncCall());
+            return await lazy;
+        }
+
+        [Benchmark]
+        public async Task<int> YieldingTaskSingle()
+        {
+            return await YieldingAsyncCall();
+        }
+
+        [Benchmark]
+        public async Task<int> YieldingAsyncLazyMulti()
+        {
+            var lazy = new AsyncLazy<int>(() => YieldingAsyncCall());
             for (int i = 0; i < IterationCount; i++)
-                await AsyncCall();
-            return await AsyncCall();
+                await lazy;
+            return await lazy;
+        }
+
+        private async Task<int> YieldingAsyncCall()
+        {
+            await Task.Yield();
+            return 42;
         }
 
         private async Task<int> AsyncCall()
         {
-            await Task.Yield();
             return 42;
         }
     }

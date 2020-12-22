@@ -39,11 +39,14 @@ Compares `await`ing a task directly and `await`ing a task wrapped by `AsyncLazy<
 
 ### Benchmark results
 
-|          Method |     Mean |     Error |    StdDev |
-|---------------- |---------:|----------:|----------:|
-| AsyncLazySingle | 2.500 us | 0.0477 us | 0.0568 us |
-|      TaskSingle | 1.333 us | 0.0057 us | 0.0053 us |
-|  AsyncLazyMulti | 2.804 us | 0.0144 us | 0.0134 us |
+|                  Method |        Mean |     Error |    StdDev |
+|------------------------ |------------:|----------:|----------:|
+|         AsyncLazySingle | 1,537.24 ns | 30.529 ns | 63.726 ns |
+|              TaskSingle |    34.76 ns |  0.449 ns |  0.420 ns |
+|          AsyncLazyMulti | 1,895.75 ns | 14.187 ns | 13.270 ns |
+| YieldingAsyncLazySingle | 2,354.20 ns | 10.358 ns |  9.689 ns |
+|      YieldingTaskSingle | 1,341.59 ns |  4.837 ns |  4.525 ns |
+|  YieldingAsyncLazyMulti | 2,844.05 ns | 23.930 ns | 22.385 ns |
 
 # Repository Benchmarks
 
