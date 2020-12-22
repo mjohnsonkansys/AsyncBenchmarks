@@ -9,7 +9,7 @@ namespace AsyncBenchmarks
     {
         private const int UniqueCount = 100;
         private const int UsedCallCount = 5;
-        private readonly AccountRepository _asyncRepo;
+        private readonly AccountRepository _repo;
 
         public AsyncRepoBench()
         {
@@ -18,15 +18,15 @@ namespace AsyncBenchmarks
             IRepo<string> emailRepo = new AsyncRepo<string>("no-reply@ociaw.com");
             IRepo<DateTime> createdRepo = new AsyncRepo<DateTime>(DateTime.UnixEpoch);
             IRepo<bool> activeRepo = new AsyncRepo<bool>(true);
-            _asyncRepo = new AccountRepository(idRepo, usernameRepo, emailRepo, createdRepo, activeRepo);
+            _repo = new AccountRepository(idRepo, usernameRepo, emailRepo, createdRepo, activeRepo);
         }
         
         [Benchmark]
-        public async Task EagerPropsUniqueAccount()
+        public async Task AllEagerPropsUniqueAccount()
         {
             for (int i = 0; i < UniqueCount; i++)
             {
-                var account = await _asyncRepo.RetrieveAccountAsync();
+                var account = await _repo.RetrieveAccountAsync();
                 _ = account.Id;
                 _ = account.Username;
                 _ = account.Email;
@@ -36,11 +36,11 @@ namespace AsyncBenchmarks
         }
 
         [Benchmark]
-        public async Task LazyPropsUniqueAccount()
+        public async Task AllLazyPropsUniqueAccount()
         {
             for (int i = 0; i < UniqueCount; i++)
             {
-                var account = _asyncRepo.RetrieveAsyncAccount();
+                var account = _repo.RetrieveAsyncAccount();
                 _ = await account.Id;
                 _ = await account.Username;
                 _ = await account.Email;
@@ -48,11 +48,33 @@ namespace AsyncBenchmarks
                 _ = await account.Active;
             }
         }
+        
+        [Benchmark]
+        public async Task TwoEagerPropsUniqueAccount()
+        {
+            for (int i = 0; i < UniqueCount; i++)
+            {
+                var account = await _repo.RetrieveAccountAsync();
+                _ = account.Id;
+                _ = account.Username;
+            }
+        }
 
         [Benchmark]
-        public async Task EagerPropsReusedAccount()
+        public async Task TwoLazyPropsUniqueAccount()
         {
-            var account = await _asyncRepo.RetrieveAccountAsync();
+            for (int i = 0; i < UniqueCount; i++)
+            {
+                var account = _repo.RetrieveAsyncAccount();
+                _ = await account.Id;
+                _ = await account.Username;
+            }
+        }
+
+        [Benchmark]
+        public async Task AllEagerPropsReusedAccount()
+        {
+            var account = await _repo.RetrieveAccountAsync();
             for (int i = 0; i < UsedCallCount; i++)
             {
                 _ = account.Id;
@@ -64,9 +86,9 @@ namespace AsyncBenchmarks
         }
 
         [Benchmark]
-        public async Task LazyPropsReusedAccount()
+        public async Task AllLazyPropsReusedAccount()
         {
-            var account = _asyncRepo.RetrieveAsyncAccount();
+            var account = _repo.RetrieveAsyncAccount();
             for (int i = 0; i < UsedCallCount; i++)
             {
                 _ = await account.Id;
@@ -74,6 +96,28 @@ namespace AsyncBenchmarks
                 _ = await account.Email;
                 _ = await account.Created;
                 _ = await account.Active;
+            }
+        }
+
+        [Benchmark]
+        public async Task TwoEagerPropsReusedAccount()
+        {
+            var account = await _repo.RetrieveAccountAsync();
+            for (int i = 0; i < UsedCallCount; i++)
+            {
+                _ = account.Id;
+                _ = account.Username;
+            }
+        }
+
+        [Benchmark]
+        public async Task TwoLazyPropsReusedAccount()
+        {
+            var account = _repo.RetrieveAsyncAccount();
+            for (int i = 0; i < UsedCallCount; i++)
+            {
+                _ = await account.Id;
+                _ = await account.Username;
             }
         }
     }
