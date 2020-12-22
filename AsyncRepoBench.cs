@@ -27,9 +27,11 @@ namespace AsyncBenchmarks
             for (int i = 0; i < UniqueCount; i++)
             {
                 var account = await _asyncRepo.RetrieveAccountAsync();
-                int id = account.Id;
-                string username = account.Username;
-                Debug.WriteLine($"{id}: {username}");
+                _ = account.Id;
+                _ = account.Username;
+                _ = account.Email;
+                _ = account.Created;
+                _ = account.Active;
             }
         }
 
@@ -39,9 +41,11 @@ namespace AsyncBenchmarks
             for (int i = 0; i < UniqueCount; i++)
             {
                 var account = _asyncRepo.RetrieveAsyncAccount();
-                int id = await account.Id;
-                string username = await account.Username;
-                Debug.WriteLine($"{id}: {username}");
+                _ = await account.Id;
+                _ = await account.Username;
+                _ = await account.Email;
+                _ = await account.Created;
+                _ = await account.Active;
             }
         }
 
@@ -51,9 +55,11 @@ namespace AsyncBenchmarks
             var account = await _asyncRepo.RetrieveAccountAsync();
             for (int i = 0; i < UsedCallCount; i++)
             {
-                int id = account.Id;
-                string username = account.Username;
-                Debug.WriteLine($"{id}: {username}");
+                _ = account.Id;
+                _ = account.Username;
+                _ = account.Email;
+                _ = account.Created;
+                _ = account.Active;
             }
         }
 
@@ -63,9 +69,11 @@ namespace AsyncBenchmarks
             var account = _asyncRepo.RetrieveAsyncAccount();
             for (int i = 0; i < UsedCallCount; i++)
             {
-                int id = await account.Id;
-                string username = await account.Username;
-                Debug.WriteLine($"{id}: {username}");
+                _ = await account.Id;
+                _ = await account.Username;
+                _ = await account.Email;
+                _ = await account.Created;
+                _ = await account.Active;
             }
         }
     }

@@ -46,12 +46,12 @@ The `AsyncRepo` simulates an external call by `await`ing `Task.Yield()`.
 
 ### Benchmark results
 
-|                  Method |       Mean |      Error |     StdDev |
-|------------------------ |-----------:|-----------:|-----------:|
-| EagerPropsUniqueAccount | 697.096 us | 13.8939 us | 19.4773 us |
-|  LazyPropsUniqueAccount | 589.356 us |  4.3258 us |  4.0464 us |
-| EagerPropsReusedAccount |   7.735 us |  0.1510 us |  0.1739 us |
-|  LazyPropsReusedAccount |   6.424 us |  0.1053 us |  0.0985 us |
+|                  Method |         Mean |      Error |     StdDev |
+|------------------------ |-------------:|-----------:|-----------:|
+| EagerPropsUniqueAccount |   690.114 us | 12.1773 us | 11.3907 us |
+|  LazyPropsUniqueAccount | 1,444.103 us | 12.7610 us | 11.9367 us |
+| EagerPropsReusedAccount |     8.165 us |  0.1569 us |  0.1927 us |
+|  LazyPropsReusedAccount |    20.963 us |  0.1091 us |  0.1020 us |
 
 # Sync Repo Benchmark
 These benchmarks simulate a call to a repository that doesn't need to go out to external
@@ -69,12 +69,12 @@ completed task.
 
 ### Benchmark results:
 
-|                  Method |         Mean |       Error |      StdDev |
-|------------------------ |-------------:|------------:|------------:|
-| EagerPropsUniqueAccount |   9,109.5 ns |   176.98 ns |   424.02 ns |
-|  LazyPropsUniqueAccount | 330,603.0 ns | 6,520.36 ns | 6,976.71 ns |
-| EagerPropsReusedAccount |     108.2 ns |     1.04 ns |     0.86 ns |
-|  LazyPropsReusedAccount |   3,850.0 ns |    57.99 ns |    54.24 ns |
+|                  Method |         Mean |        Error |       StdDev |
+|------------------------ |-------------:|-------------:|-------------:|
+| EagerPropsUniqueAccount |   9,350.2 ns |    185.77 ns |    482.85 ns |
+|  LazyPropsUniqueAccount | 798,035.6 ns | 13,307.92 ns | 12,448.24 ns |
+| EagerPropsReusedAccount |     119.8 ns |      2.42 ns |      2.14 ns |
+|  LazyPropsReusedAccount |   9,384.3 ns |    150.63 ns |    140.90 ns |
 
 # What's missing
 The account 5 properties right now, but we read all of them every time. How does
