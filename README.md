@@ -75,3 +75,7 @@ completed task.
 |  LazyPropsUniqueAccount | 260,528.39 ns | 2,821.536 ns | 2,639.266 ns |
 | EagerPropsReusedAccount |      56.98 ns |     1.096 ns |     0.915 ns |
 |  LazyPropsReusedAccount |   3,023.80 ns |    15.869 ns |    14.844 ns |
+
+# What's missing
+The account only has 2 properties right now, and we read all of them every time. How does
+performance change if we add a bunch more properties, but only access a couple of them?
