@@ -33,6 +33,18 @@ This benchmark compares synchronous, asynchronous, and mixed method calls.
 |    MixedCall | 21.674 ns | 0.1605 ns | 0.1423 ns |
 | FullSyncCall |  4.416 ns | 0.1147 ns | 0.1073 ns |
 
+# Async Lazy Benchmark
+
+Compares `await`ing a task directly and `await`ing a task wrapped by `AsyncLazy<T>`.
+
+### Benchmark results
+
+|          Method |     Mean |     Error |    StdDev |
+|---------------- |---------:|----------:|----------:|
+| AsyncLazySingle | 2.500 us | 0.0477 us | 0.0568 us |
+|      TaskSingle | 1.333 us | 0.0057 us | 0.0053 us |
+|  AsyncLazyMulti | 2.804 us | 0.0144 us | 0.0134 us |
+
 # Repository Benchmarks
 
 `AllEagerProps` benchmarks eagerly load Account properties and read all of them.
