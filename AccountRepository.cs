@@ -24,12 +24,6 @@ namespace AsyncBenchmarks
             _emailRepo = emailRepo;
             _createdRepo = createdRepo;
             _activeRepo = activeRepo;
-
-            _idRepo.Value = 1;
-            _usernameRepo.Value = "name";
-            _emailRepo.Value = "no-reply@ociaw.com";
-            _createdRepo.Value = DateTime.UnixEpoch;
-            _activeRepo.Value = true;
         }
 
         public async Task<EagerAccount> RetrieveAccountAsync()

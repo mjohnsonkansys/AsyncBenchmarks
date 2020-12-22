@@ -4,8 +4,8 @@ namespace AsyncBenchmarks
 {
     public interface IRepo<T>
     {
-        public T? Value { get; set; }
+        public T Value { get; set; }
 
-        public Task<T?> RetrieveAsync();
+        public Task<T> RetrieveAsync();
     }
 }

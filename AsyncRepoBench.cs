@@ -13,11 +13,11 @@ namespace AsyncBenchmarks
 
         public AsyncRepoBench()
         {
-            IRepo<int> idRepo = new AsyncRepo<int>();
-            IRepo<string> usernameRepo = new AsyncRepo<string>();
-            IRepo<string> emailRepo = new AsyncRepo<string>();
-            IRepo<DateTime> createdRepo = new AsyncRepo<DateTime>();
-            IRepo<bool> activeRepo = new AsyncRepo<bool>();
+            IRepo<int> idRepo = new AsyncRepo<int>(1);
+            IRepo<string> usernameRepo = new AsyncRepo<string>("name");
+            IRepo<string> emailRepo = new AsyncRepo<string>("no-reply@ociaw.com");
+            IRepo<DateTime> createdRepo = new AsyncRepo<DateTime>(DateTime.UnixEpoch);
+            IRepo<bool> activeRepo = new AsyncRepo<bool>(true);
             _asyncRepo = new AccountRepository(idRepo, usernameRepo, emailRepo, createdRepo, activeRepo);
         }
         

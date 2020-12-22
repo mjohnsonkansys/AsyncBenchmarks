@@ -4,11 +4,13 @@ namespace AsyncBenchmarks
 {
     public sealed class AsyncRepo<T> : IRepo<T>
     {
-        public T? Value { get; set; }
+        public AsyncRepo(T value) => Value = value;
+
+        public T Value { get; set; }
 
         public int DelayMs { get; set; }
 
-        public async Task<T?> RetrieveAsync()
+        public async Task<T> RetrieveAsync()
         {
             if (DelayMs > 0)
                 await Task.Delay(DelayMs);
