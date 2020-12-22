@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -14,7 +15,10 @@ namespace AsyncBenchmarks
         {
             IRepo<int> idRepo = new AsyncRepo<int>();
             IRepo<string> usernameRepo = new AsyncRepo<string>();
-            _asyncRepo = new AccountRepository(idRepo, usernameRepo);
+            IRepo<string> emailRepo = new AsyncRepo<string>();
+            IRepo<DateTime> createdRepo = new AsyncRepo<DateTime>();
+            IRepo<bool> activeRepo = new AsyncRepo<bool>();
+            _asyncRepo = new AccountRepository(idRepo, usernameRepo, emailRepo, createdRepo, activeRepo);
         }
         
         [Benchmark]
