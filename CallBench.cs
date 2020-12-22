@@ -6,7 +6,7 @@ namespace AsyncBenchmarks
     public class CallBench
     {
         [Benchmark]
-        public async Task<int> AsyncCall() => await Sync();
+        public async Task<int> AsyncCall() => await Async();
 
         [Benchmark]
         public async Task<int> MixedCall() => await Sync();

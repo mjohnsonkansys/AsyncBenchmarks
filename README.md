@@ -29,9 +29,9 @@ This benchmark compares synchronous, asynchronous, and mixed method calls.
 
 |       Method |      Mean |     Error |    StdDev |
 |------------- |----------:|----------:|----------:|
-|    AsyncCall | 34.497 ns | 0.6843 ns | 0.8654 ns |
-|    MixedCall | 22.185 ns | 0.2746 ns | 0.2569 ns |
-| FullSyncCall |  4.307 ns | 0.0893 ns | 0.0836 ns |
+|    AsyncCall | 35.992 ns | 0.5083 ns | 0.4506 ns |
+|    MixedCall | 21.674 ns | 0.1605 ns | 0.1423 ns |
+| FullSyncCall |  4.416 ns | 0.1147 ns | 0.1073 ns |
 
 # Repository Benchmarks
 
