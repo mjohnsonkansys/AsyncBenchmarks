@@ -104,3 +104,17 @@ completed task.
 |  AllLazyPropsReusedAccount |   7,411.52 ns |    55.369 ns |    51.792 ns |
 | TwoEagerPropsReusedAccount |      86.33 ns |     1.657 ns |     1.384 ns |
 |  TwoLazyPropsReusedAccount |   3,229.06 ns |    18.189 ns |    17.014 ns |
+
+# Continue Benchmark
+Compares ContinueWith and await
+
+### Benchmark results:
+
+|                Method |             Mean |          Error |           StdDev |
+|---------------------- |-----------------:|---------------:|-----------------:|
+|           AwaitYields |      4,459.67 ns |      81.541 ns |        97.069 ns |
+|    ContinueWithYields |      8,088.39 ns |     157.621 ns |       258.977 ns |
+|        AwaitCompleted |         86.09 ns |       0.540 ns |         0.451 ns |
+| ContinueWithCompleted |      7,269.94 ns |      58.798 ns |        54.999 ns |
+|            AwaitDelay | 29,869,587.99 ns | 594,620.063 ns | 1,214,651.218 ns |
+|     ContinueWithDelay | 27,881,613.52 ns | 554,491.159 ns | 1,027,784.916 ns |
